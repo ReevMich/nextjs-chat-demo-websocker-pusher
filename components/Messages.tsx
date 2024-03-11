@@ -23,7 +23,7 @@ function Messages({ initialMessages, roomId }: MessagesProps) {
     });
 
     return () => pusherClient.unsubscribe(roomId);
-  }, [roomId]);
+  }, []);
 
   return (
     <ScrollArea className="flex flex-1 max-h-[458px] -mr-4">

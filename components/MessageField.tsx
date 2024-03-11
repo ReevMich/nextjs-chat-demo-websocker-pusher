@@ -10,15 +10,15 @@ interface MessageFieldProps {
 }
 
 function MessageField({ roomId }: MessageFieldProps) {
-  const ref = useRef<HTMLFormElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <form 
-      ref={ref}
+      ref={formRef}
       className="flex flex-1" 
       action={async (formData) => {
         await SendMessage(formData);
-        ref.current?.reset();
+        formRef.current?.reset();
     }}>
       <input type="hidden" name="roomId" value={roomId} />
       <Input placeholder="Type your message here" name="content" />
