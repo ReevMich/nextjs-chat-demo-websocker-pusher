@@ -12,3 +12,11 @@ export const pusherServer = new PusherServer({
 export const pusherClient = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY!, {
     cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
 });
+
+pusherClient.connection.bind('connected', () => {
+    console.log('connected')
+})
+pusherClient.connection.bind('disconnected', () => {
+    console.log('disconnected')
+    pusherClient.connect()
+})
